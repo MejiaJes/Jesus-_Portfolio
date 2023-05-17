@@ -1,4 +1,4 @@
-##Show each country's sales by customer age group.
+#Show each country's sales by customer age group.
 WITH cte1 AS(Select 
     t3.EnglishCountryRegionName AS country,
     DATEDIFF(MONTH, BirthDate, OrderDate)/12 AS age,
