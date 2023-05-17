@@ -1,0 +1,25 @@
+## Show each country's sales by customer age group.
+WITH cte1 AS(Select 
+    t3.EnglishCountryRegionName AS country,
+    DATEDIFF(MONTH, BirthDate, OrderDate)/12 AS age,
+    SalesOrderNumber
+FROM FactInternetSales t1
+JOIN DimCustomer t2
+ON t1.CustomerKey = t2.CustomerKey
+JOIN DimGeography t3
+ON t2.GeographyKey = t3.GeographyKey)
+
+SELECT country,
+    CASE WHEN age < 30 THEN 'a.Under 30'
+    WHEN age BETWEEN 30 and 40 THEN 'b.30-40'
+    WHEN age BETWEEN 40 and 50 THEN 'c.40-50'
+    WHEN age BETWEEN 50 and 60 THEN 'd.50-60'
+    ELSE 'e.Over 60' END AS age_group,
+    COUNT(SalesOrderNumber) as sales
+FROM cte1
+GROUP BY country, CASE WHEN age < 30 THEN 'a.Under 30'
+    WHEN age BETWEEN 30 and 40 THEN 'b.30-40'
+    WHEN age BETWEEN 40 and 50 THEN 'c.40-50'
+    WHEN age BETWEEN 50 and 60 THEN 'd.50-60'
+    ELSE 'e.Over 60' END
+ORDER BY country, age_group
