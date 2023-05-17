@@ -23,5 +23,7 @@ GROUP BY country, CASE WHEN age < 30 THEN 'a.Under 30'
     WHEN age BETWEEN 50 and 60 THEN 'd.50-60'
     ELSE 'e.Over 60' END
 ORDER BY country, age_group
-Sales by Age Group and Country
+Sales by Age Group and Country 
+![](Sales by Age Group and Country (1).png)
+
 
