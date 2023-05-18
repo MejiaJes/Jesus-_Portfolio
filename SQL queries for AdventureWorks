@@ -54,8 +54,6 @@ GROUP BY product, CASE WHEN age < 30 THEN 'a.Under 30'
     WHEN age BETWEEN 50 and 60 THEN 'd.50-60'
     ELSE 'e.Over 60' END
 ORDER BY product, age_group
-![Sales by Age Group and Country (1)](https://github.com/MejiaJes/Jesus-_Portfolio/assets/133721126/054a6d8b-31e0-46f8-ace6-3771b66bf1c3)
-
 --Show monthly sales for Australia and USA compared for the year 2012--
 SELECT 
     substring(cast([OrderDateKey] as char),1,6) as Month, 
