@@ -1,6 +1,6 @@
 --Question 1: Which Products Should We order More of or Less of?--
 --Write a query to compute the low stock for each product using a correlated subquery.--
---In SQLite, REAL is the datatype for FLOAT.
+--In SQLite, REAL is the datatype for INT.
 WITH low AS(SELECT o.productCode, ROUND(SUM(CAST(quantityOrdered AS REAL))/quantityInStock,2) as lowstock
 FROM orderdetails o
 JOIN products 
